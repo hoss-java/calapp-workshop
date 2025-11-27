@@ -44,7 +44,7 @@ gantt
 # Stories/cards MD1 - Develop
 
 ## 48-001
-### - [x] Goal : Add README and DECK
+### Goal : Add README and DECK ![done](https://img.shields.io/badge/status-DONE-brightgreen)
 <details>
     <summary>Details</summary>
 
