@@ -44,7 +44,7 @@ gantt
 # Stories/cards MD1 - Develop
 
 ## 48-001
-### Goal : Add README and DECK ![status](https://img.shields.io/badge/status-DONE-brightgreen)
+### Add README and DECK ![status](https://img.shields.io/badge/status-DONE-brightgreen)
 <details>
     <summary>Details</summary>
 
@@ -74,7 +74,7 @@ gantt
 
 
 ## 48-002
-### Goal : CalAppV1 ![status](https://img.shields.io/badge/status-ONGOING-yellow)
+### CalAppV1 ![status](https://img.shields.io/badge/status-ONGOING-yellow)
 <details>
     <summary>Details</summary>
 
@@ -99,7 +99,7 @@ gantt
 
 
 ## 48-003
-### Goal : CalAppV2 ![status](https://img.shields.io/badge/status-NOT--STARTED-lightgrey)
+### CalAppV2 ![status](https://img.shields.io/badge/status-NOT--STARTED-lightgrey)
 <details>
     <summary>Details</summary>
 
@@ -123,7 +123,7 @@ gantt
 
 
 ## 48-004
-### Goal : Recode CalAppV2 in a Maven project. ![status](https://img.shields.io/badge/status-NOT--STARTED-lightgrey)
+### Recode CalAppV2 in a Maven project. ![status](https://img.shields.io/badge/status-NOT--STARTED-lightgrey)
 <details>
     <summary>Details</summary>
 
@@ -148,7 +148,7 @@ gantt
 
 
 ## 48-005
-### Goal : Add some tests to the maven version of CalAppV2.  ![status](https://img.shields.io/badge/status-NOT--STARTED-lightgrey)
+### Add some tests to the maven version of CalAppV2.  ![status](https://img.shields.io/badge/status-NOT--STARTED-lightgrey)
 <details>
     <summary>Details</summary>
 
@@ -173,7 +173,7 @@ gantt
 
 
 ## 48-006
-### Goal : Recode CalAppV2 as a spring project ![status](https://img.shields.io/badge/status-NOT--STARTED-lightgrey)
+### Recode CalAppV2 as a spring project ![status](https://img.shields.io/badge/status-NOT--STARTED-lightgrey)
 <details>
     <summary>Details</summary>
 
@@ -198,7 +198,7 @@ gantt
 
 
 ## 48-007
-### Goal : Impliment CalAppV2 to Tomcat as a service ![status](https://img.shields.io/badge/status-NOT--STARTED-lightgrey)
+### Impliment CalAppV2 to Tomcat as a service ![status](https://img.shields.io/badge/status-NOT--STARTED-lightgrey)
 <details>
     <summary>Details</summary>
 
@@ -223,7 +223,7 @@ gantt
 
 
 ## 48-008
-### Goal : Investigate about useful tools. ![status](https://img.shields.io/badge/status-NOT--STARTED-lightgrey)
+### Investigate about useful tools. ![status](https://img.shields.io/badge/status-NOT--STARTED-lightgrey)
 <details>
     <summary>Details</summary>
 
@@ -247,7 +247,7 @@ gantt
 
 
 ## 48-009
-### Goal : Spike how to automate tests ![status](https://img.shields.io/badge/status-NOT--STARTED-lightgrey)
+### Spike how to automate tests ![status](https://img.shields.io/badge/status-NOT--STARTED-lightgrey)
 <details>
     <summary>Details</summary>
 
