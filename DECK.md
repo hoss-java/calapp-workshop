@@ -44,7 +44,7 @@ gantt
 # Stories/cards MD1 - Develop
 
 ## 48-001
-### Goal : Add README and DECK ![done](https://img.shields.io/badge/status-DONE-brightgreen)
+### Goal : Add README and DECK ![status](https://img.shields.io/badge/status-DONE-brightgreen)
 <details>
     <summary>Details</summary>
 
@@ -74,8 +74,10 @@ gantt
 ---
 
 ## 48-002
->
->### Goal : CalAppV1
+### Goal : CalAppV1 ![status](https://img.shields.io/badge/status-ONGOING-yellow)
+<details>
+    <summary>Details</summary>
+
 >The goal of this card is to develop CalAppV1 (a singel java file) - Coding a simple java code to get numbers and oprtors as input (all sepertly) and then print results.
 >
 >### DOD  (definition of done):
@@ -92,11 +94,15 @@ gantt
 >
 >### References :
 >* []()
+
+</details>
 ---
 
 ## 48-003
->
->### Goal : CalAppV2
+### Goal : CalAppV2 ![status](https://img.shields.io/badge/status-NOT--STARTED-lightgrey)
+<details>
+    <summary>Details</summary>
+
 >The goal of this card is to code a parser base.
 >
 >### DOD  (definition of done):
@@ -113,11 +119,14 @@ gantt
 >
 >### References :
 >* []()
+</details>
 ---
 
 ## 48-004
->
->### Goal : Recode CalAppV2 in a Maven project.
+### Goal : Recode CalAppV2 in a Maven project. ![status](https://img.shields.io/badge/status-NOT--STARTED-lightgrey)
+<details>
+    <summary>Details</summary>
+
 >The goal of this card is to Recode CalAppV2 in a Maven project.
 >
 >### DOD  (definition of done):
@@ -135,11 +144,14 @@ gantt
 >
 >### References :
 >* []()
+</details>
 ---
 
 ## 48-005
->
->### Goal : Add some tests to the maven version of CalAppV2.
+### Goal : Add some tests to the maven version of CalAppV2.  ![status](https://img.shields.io/badge/status-NOT--STARTED-lightgrey)
+<details>
+    <summary>Details</summary>
+
 >The goal of this card is to add some tests to the maven version of CalAppV2.
 >
 >### DOD  (definition of done):
@@ -157,11 +169,14 @@ gantt
 >
 >### References :
 >* []()
+</details>
 ---
 
 ## 48-006
->
->### Goal : Recode CalAppV2 as a spring project
+### Goal : Recode CalAppV2 as a spring project ![status](https://img.shields.io/badge/status-NOT--STARTED-lightgrey)
+<details>
+    <summary>Details</summary>
+
 >The goal of this card is to recode CalAppV2 as a spring project.
 >
 >### DOD  (definition of done):
@@ -179,11 +194,14 @@ gantt
 >
 >### References :
 >* []()
+</details>
 ---
 
 ## 48-007
->
->### Goal : Impliment CalAppV2 to Tomcat as a service
+### Goal : Impliment CalAppV2 to Tomcat as a service ![status](https://img.shields.io/badge/status-NOT--STARTED-lightgrey)
+<details>
+    <summary>Details</summary>
+
 >The goal of this card is to develop a version of CalAppV2 to impliment to Tomcat as a service.
 >
 >### DOD  (definition of done):
@@ -201,11 +219,14 @@ gantt
 >
 >### References :
 >* []()
+</details>
 ---
 
 ## 48-008
->
->### Goal : Investigate about useful tools.
+### Goal : Investigate about useful tools. ![status](https://img.shields.io/badge/status-NOT--STARTED-lightgrey)
+<details>
+    <summary>Details</summary>
+
 >The goal of this card is to investigate about useful tools and methods (WOW) that can make it easre/faster to code.
 >
 >### DOD  (definition of done):
@@ -222,11 +243,14 @@ gantt
 >
 >### References :
 >* []()
+</details>
 ---
 
 ## 48-009
->
->### Goal : Spike how to automate tests
+### Goal : Spike how to automate tests ![status](https://img.shields.io/badge/status-NOT--STARTED-lightgrey)
+<details>
+    <summary>Details</summary>
+
 >The goal of this card is to spike how to automate tests.
 >
 >### DOD  (definition of done):
@@ -243,6 +267,7 @@ gantt
 >
 >### References :
 >* []()
+</details>
 ---
 
 # Stories/cards MD2 - Develop
