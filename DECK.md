@@ -44,7 +44,7 @@ gantt
 # Stories/cards MD1 - Develop
 
 ## 48-001
-### Goal : Add README and DECK
+### - [x] Goal : Add README and DECK
 <details>
     <summary>Details</summary>
 
