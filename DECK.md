@@ -47,6 +47,7 @@ gantt
 ### Goal : Add README and DECK
 <details>
     <summary>Details</summary>
+
 >The goal of this card is to structure this repo.
 >It also aims to add a deck file to the repo.
 >
