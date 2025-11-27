@@ -45,7 +45,7 @@ gantt
 
 ## 48-001
 <details>
-    <summary>Add README and DECK - Click to expand</summary>
+    <summary>▶ Click to expand / ▼ Click to fold</summary>
 
 >### Goal : Add README and DECK
 >The goal of this card is to structure this repo.
