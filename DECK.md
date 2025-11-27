@@ -46,28 +46,29 @@ gantt
 ## 48-001
 <details>
     <summary>Add README and DECK</summary>
-    >### Goal : Add README and DECK
-    >The goal of this card is to structure this repo.
-    >It also aims to add a deck file to the repo.
-    >
-    >### DOD  (definition of done):
-    >Hooks files are added to the local repo.
-    >A Deck file is created for the progect
-    >
-    >### TODO :
-    >- [x] 1. Add git hooks' scripts
-    >- [x] 2. Updated Deck path
-    >- [x] 3. Add a deck file to the repo
-    >- [x] 4. Add a time plan and pre-stories to plan how to work on the project
-    >
-    >### Reports :
-    >* 
-    >
-    >### Steps to test and debugging:
-    >- [] 1.
-    >
-    >### References :
-    >* []()
+>### Goal : Add README and DECK
+>The goal of this card is to structure this repo.
+>It also aims to add a deck file to the repo.
+>
+>### DOD  (definition of done):
+>Hooks files are added to the local repo.
+>A Deck file is created for the progect
+>
+>### TODO :
+>- [x] 1. Add git hooks' scripts
+>- [x] 2. Updated Deck path
+>- [x] 3. Add a deck file to the repo
+>- [x] 4. Add a time plan and pre-stories to plan how to work on the project
+>
+>### Reports :
+>* 
+>
+>### Steps to test and debugging:
+>- [] 1.
+>
+>### References :
+>* []()
+</details>
 ---
 
 ## 48-002
