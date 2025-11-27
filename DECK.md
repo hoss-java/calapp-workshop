@@ -27,9 +27,11 @@ Abbreviations
 ```mermaid
 gantt
     section MD1
-    SD1 - Plan how to work                 :md1des1, 2025-11-25,1d
+    SD1 - Plan how to work part1                :done,md1des1, 2025-11-25,1d
+    SD2 - Develop                :md1des2, after md1des1,2d
 
     section MD2
+    SD1 - Document                :md2des1, 2025-11-29,1d
 ```
 
 ## Maintenance timeplan
@@ -41,7 +43,7 @@ gantt
 
 # Stories/cards MD1 - Develop
 
->## 48-001
+## 48-001
 >
 >### Goal : Add README and DECK
 >The goal of this card is to structure this repo.
@@ -66,5 +68,180 @@ gantt
 >### References :
 >* []()
 ---
+
+## 48-002
+>
+>### Goal : CalAppV1
+>The goal of this card is to develop CalAppV1 (a singel java file) - Coding a simple java code to get numbers and oprtors as input (all sepertly) and then print results.
+>
+>### DOD  (definition of done):
+>CalAppV1 is coded and pushed.
+>
+>### TODO :
+>- [ ] 1. 
+>
+>### Reports :
+>* 
+>
+>### Steps to test and debugging:
+>- [] 1.
+>
+>### References :
+>* []()
+---
+
+## 48-003
+>
+>### Goal : CalAppV2
+>The goal of this card is to code a parser base.
+>
+>### DOD  (definition of done):
+>CalAppV2 is coded and pushed.
+>
+>### TODO :
+>- [ ] 1. 
+>
+>### Reports :
+>* 
+>
+>### Steps to test and debugging:
+>- [] 1.
+>
+>### References :
+>* []()
+---
+
+## 48-004
+>
+>### Goal : Recode CalAppV2 in a Maven project.
+>The goal of this card is to Recode CalAppV2 in a Maven project.
+>
+>### DOD  (definition of done):
+>CalAppV2 is coded and pushed.
+>Finings are documented.
+>
+>### TODO :
+>- [ ] 1. 
+>
+>### Reports :
+>* 
+>
+>### Steps to test and debugging:
+>- [] 1.
+>
+>### References :
+>* []()
+---
+
+## 48-005
+>
+>### Goal : Add some tests to the maven version of CalAppV2.
+>The goal of this card is to add some tests to the maven version of CalAppV2.
+>
+>### DOD  (definition of done):
+>CalAppV2 is coded and pushed.
+>Finings are documented.
+>
+>### TODO :
+>- [ ] 1. 
+>
+>### Reports :
+>* 
+>
+>### Steps to test and debugging:
+>- [] 1.
+>
+>### References :
+>* []()
+---
+
+## 48-006
+>
+>### Goal : Recode CalAppV2 as a spring project
+>The goal of this card is to recode CalAppV2 as a spring project.
+>
+>### DOD  (definition of done):
+>CalAppV2 is coded and pushed.
+>Finings are documented.
+>
+>### TODO :
+>- [ ] 1. 
+>
+>### Reports :
+>* 
+>
+>### Steps to test and debugging:
+>- [] 1.
+>
+>### References :
+>* []()
+---
+
+## 48-007
+>
+>### Goal : Impliment CalAppV2 to Tomcat as a service
+>The goal of this card is to develop a version of CalAppV2 to impliment to Tomcat as a service.
+>
+>### DOD  (definition of done):
+>All finings are documented.
+>CalAppV2 is coded and pushed.
+>
+>### TODO :
+>- [ ] 1. Document all findings
+>
+>### Reports :
+>* 
+>
+>### Steps to test and debugging:
+>- [] 1.
+>
+>### References :
+>* []()
+---
+
+## 48-008
+>
+>### Goal : Investigate about useful tools.
+>The goal of this card is to investigate about useful tools and methods (WOW) that can make it easre/faster to code.
+>
+>### DOD  (definition of done):
+>All finings are documented.
+>
+>### TODO :
+>- [ ] 1. Document all findings
+>
+>### Reports :
+>* 
+>
+>### Steps to test and debugging:
+>- [] 1.
+>
+>### References :
+>* []()
+---
+
+## 48-009
+>
+>### Goal : Spike how to automate tests
+>The goal of this card is to spike how to automate tests.
+>
+>### DOD  (definition of done):
+>All finings are documented.
+>
+>### TODO :
+>- [ ] 1. Document all findings
+>
+>### Reports :
+>* 
+>
+>### Steps to test and debugging:
+>- [] 1.
+>
+>### References :
+>* []()
+---
+
+# Stories/cards MD2 - Develop
+
 
 # Stories/cards MD1 - Maintenance
