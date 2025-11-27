@@ -71,7 +71,7 @@ gantt
 >* []()
 
 </details>
----
+
 
 ## 48-002
 ### Goal : CalAppV1 ![status](https://img.shields.io/badge/status-ONGOING-yellow)
@@ -96,7 +96,7 @@ gantt
 >* []()
 
 </details>
----
+
 
 ## 48-003
 ### Goal : CalAppV2 ![status](https://img.shields.io/badge/status-NOT--STARTED-lightgrey)
@@ -120,7 +120,7 @@ gantt
 >### References :
 >* []()
 </details>
----
+
 
 ## 48-004
 ### Goal : Recode CalAppV2 in a Maven project. ![status](https://img.shields.io/badge/status-NOT--STARTED-lightgrey)
@@ -145,7 +145,7 @@ gantt
 >### References :
 >* []()
 </details>
----
+
 
 ## 48-005
 ### Goal : Add some tests to the maven version of CalAppV2.  ![status](https://img.shields.io/badge/status-NOT--STARTED-lightgrey)
@@ -170,7 +170,7 @@ gantt
 >### References :
 >* []()
 </details>
----
+
 
 ## 48-006
 ### Goal : Recode CalAppV2 as a spring project ![status](https://img.shields.io/badge/status-NOT--STARTED-lightgrey)
@@ -195,7 +195,7 @@ gantt
 >### References :
 >* []()
 </details>
----
+
 
 ## 48-007
 ### Goal : Impliment CalAppV2 to Tomcat as a service ![status](https://img.shields.io/badge/status-NOT--STARTED-lightgrey)
@@ -220,7 +220,7 @@ gantt
 >### References :
 >* []()
 </details>
----
+
 
 ## 48-008
 ### Goal : Investigate about useful tools. ![status](https://img.shields.io/badge/status-NOT--STARTED-lightgrey)
@@ -244,7 +244,7 @@ gantt
 >### References :
 >* []()
 </details>
----
+
 
 ## 48-009
 ### Goal : Spike how to automate tests ![status](https://img.shields.io/badge/status-NOT--STARTED-lightgrey)
@@ -268,7 +268,7 @@ gantt
 >### References :
 >* []()
 </details>
----
+
 
 # Stories/cards MD2 - Develop
 
