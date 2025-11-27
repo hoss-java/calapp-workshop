@@ -44,10 +44,9 @@ gantt
 # Stories/cards MD1 - Develop
 
 ## 48-001
+### Goal : Add README and DECK
 <details>
-    <summary>▶ Click to expand / ▼ Click to fold</summary>
-
->### Goal : Add README and DECK
+    <summary>Details</summary>
 >The goal of this card is to structure this repo.
 >It also aims to add a deck file to the repo.
 >
