@@ -84,7 +84,7 @@ gantt
 >CalAppV1 is coded and pushed.
 >
 >### TODO :
->- [x] 1. Start with a class that recognize operators
+>- [x] 1. Start with a class that recognizes operators
 >- [x] 2. Add operators methods
 >- [x] 3. Update documents
 >- [x] 4. Improve
@@ -113,7 +113,12 @@ gantt
 >CalAppV2 is coded and pushed.
 >
 >### TODO :
->- [ ] 1. 
+>- [ ] 1. Start with a class that inputs an expression
+>- [ ] 2. Add parser
+>- [ ] 3. Add doxigen
+>- [ ] 4. Update documents
+>- [ ] 5. Improve
+>- [ ] 6. Update DECK
 >
 >### Reports :
 >* 
