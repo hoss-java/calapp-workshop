@@ -84,7 +84,9 @@ gantt
 >CalAppV1 is coded and pushed.
 >
 >### TODO :
->- [ ] 1. 
+>- [x] 1. Start with a class that recognize operators
+>- [ ] 2. Add operators methods
+>- [ ] 3. Update documents
 >
 >### Reports :
 >* 
