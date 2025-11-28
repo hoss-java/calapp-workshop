@@ -65,14 +65,30 @@ See [here](https://github.com/hoss-java/calapp-workshop/blob/main/rawjava/README
 
 ### How it works
 
-1. **CalAppV2** asks first to select an oprator.
-> * An operator can be (`+`, `-`, `*`, `/`) or `exit`
-2. **CalAppV1** asks to inpute two numbers that can be `Double`
-3. If the oprator is a valid oprator the result will be printed otherwis an invalid operator error is shown
+1. **CalAppV2** is an expression parser base calculator.
+> * It means it try to parse an calculator and calculate the result
+> * It is a very simple parser and can't parse nested expression.
+> * An expression can containe numbers, `+`, `-`, `*`, `/` and `(`, `)`
+> * Typing `exit` finished the program and quits.
+2. **CalAppV2** asks to inpute an expression.
+3. The expression is parsed
+> * Whith spaces are removed.
+> * The parser creates two stacks (via an standard library `import java.util.Stack`), one for values, and one for oprators.
+> * The parser loops on the expression chars
+>> * If it starts with a digit, it will continue to find a digit token. The token is pushed to the values stack
+>> * If it is an oprator. It will be pushed to the operators stack
+>> * `(` is seen as an oprator and it will pushed the operators stack.
+>> * if `)` is found. The parser expects to find two valus and two opratores pushed to the stacks (values and oprators).
+>>> * In the case of finding `)` two tokens from the valuse stack and two tokens from the operators stack are poped and a new token which is the result of the contains of the values and operator inside of the parentheses is pushed to the values stack.
+>> * When the expression is parsed and all tokens are pushed to the stacks, a loop starts to pop values and operators to calculate the final results.
+>>> * The parses expects to find two values for each operator.
+> * An expression has a pattern like `<[(]a<[+,-,*,/]>b[)]>[<[+,-,*,/]><[(]a<[+,-,*,/]>b[)]>]`. In the case of an expression does not follow the pattern , the parser will be crached
+5. The main code uses a `try{} catch{}` to handle errors in cases that expression does not follow a right pattern.
 4. To exit , an 'exit' instead operators is used.
 
 A summary
 * **CalAppV2** uses two standard libraries
 > * `java.util.Scanner`
+> * `import java.util.Stack`
 
 ### Improve **CalAppV2**

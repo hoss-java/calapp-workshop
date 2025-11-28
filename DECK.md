@@ -113,8 +113,8 @@ gantt
 >CalAppV2 is coded and pushed.
 >
 >### TODO :
->- [ ] 1. Start with a class that inputs an expression
->- [ ] 2. Add parser
+>- [x] 1. Start with a class that inputs an expression
+>- [x] 2. Add an expression parser
 >- [ ] 3. Add doxigen
 >- [ ] 4. Update documents
 >- [ ] 5. Improve
