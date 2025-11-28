@@ -52,7 +52,7 @@ In the CalAppV1 logic, numbers are asked first and then an operator validation i
 # **CalAppV2**
 [**Deck Board**](https://github.com/hoss-java/calapp-workshop/blob/main/DECK.md#48-003)
 
-* **OBS!** Doxigen was added by getting help from AI tools
+* **OBS!** Doxygen was added by getting help from AI tools
 * **OBS!** No test has been planned to code on this level.
 
 ## How to use the code
@@ -94,4 +94,4 @@ A summary
 
 ### Improve **CalAppV2**
 
-* **OBS!** Doxigen was added by getting help from AI tools
+* **OBS!** Doxygen was added by getting help from AI tools

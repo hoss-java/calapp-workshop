@@ -88,7 +88,7 @@ gantt
 >- [x] 2. Add operators methods
 >- [x] 3. Update documents
 >- [x] 4. Improve
->- [x] 5. Add doxigen
+>- [x] 5. Add doxygen
 >
 >### Reports :
 >* 
@@ -115,8 +115,8 @@ gantt
 >### TODO :
 >- [x] 1. Start with a class that inputs an expression
 >- [x] 2. Add an expression parser
->- [x] 3. Add doxigen
->- [ ] 4. Update documents
+>- [x] 3. Add doxygen
+>- [x] 4. Update documents
 >- [ ] 5. Improve
 >- [ ] 6. Update DECK
 >
