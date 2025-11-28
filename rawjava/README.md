@@ -24,3 +24,13 @@ So to run `~/github-java/calapp-workshop/rawjava/CalAppV1.java`
 ```
 docker exec -it openjdk java calapp-workshop/rawjava/CalAppV1.java
 ```
+
+### How it works
+
+1. `CalAppV1` asks first to select an oprator.
+> * An operator can be (`+`, `-`, `*`, `/`) or `exit`
+2. `CalAppV1` asks to inpute two numbers that can be `Double`
+3. If the oprator is a valid oprator the result will be printed otherwis an invalid operator error is shown
+4. To exit , an 'exit' instead operators is used.
+
+### Improve CalAppV1
