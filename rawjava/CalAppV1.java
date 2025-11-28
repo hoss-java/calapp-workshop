@@ -2,21 +2,22 @@ import java.util.Set;
 import java.util.Scanner;
 
 /**
- * CalAppV1
+ * @file CalAppV1.java
+ * @brief Interactive console calculator application.
  *
- * <p>Interactive console calculator application.
+ * Interactive console calculator application.
  * Supports addition, subtraction, multiplication and division.
- * Enter 'exit' to terminate the program.</p>
+ * Enter 'exit' to terminate the program.
  */
 
 public class CalAppV1 {
 
     /**
-     * Program entry point.
+     * @brief Program entry point.
      *
-     * <p>This method runs a loop that prompts the user for an operation
+     * This method runs a loop that prompts the user for an operation
      * and two numbers, performs the operation, and prints the result.
-     * The loop continues until the user types "exit".</p>
+     * The loop continues until the user types "exit".
      *
      * @param args command-line arguments (ignored)
      */
@@ -79,7 +80,7 @@ public class CalAppV1 {
     }
 
     /**
-     * Add two numbers.
+     * @brief Add two numbers.
      *
      * @param a first addend
      * @param b second addend
@@ -90,7 +91,7 @@ public class CalAppV1 {
     }
 
     /**
-     * Subtract two numbers.
+     * @brief Subtract two numbers.
      *
      * @param a minuend
      * @param b subtrahend
@@ -101,7 +102,7 @@ public class CalAppV1 {
     }
 
     /**
-     * Multiply two numbers.
+     * @brief Multiply two numbers.
      *
      * @param a first factor
      * @param b second factor
@@ -112,7 +113,7 @@ public class CalAppV1 {
     }
 
     /**
-     * Divide two numbers.
+     * @brief Divide two numbers.
      *
      * <p>Returns Double.NaN when attempting division by zero.</p>
      *
