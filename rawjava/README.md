@@ -93,5 +93,6 @@ A summary
 > * `import java.util.Stack`
 
 ### Improve **CalAppV2**
-
+* **CalAppV2**'s' parser has a lot of limitations that can be improved but I don't think so it needs to be done now
+> * The parser can be improved using a recursive method
 * **OBS!** Doxygen was added by getting help from AI tools

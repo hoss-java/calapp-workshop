@@ -117,7 +117,7 @@ gantt
 >- [x] 2. Add an expression parser
 >- [x] 3. Add doxygen
 >- [x] 4. Update documents
->- [ ] 5. Improve
+>- [x] 5. Improve
 >- [ ] 6. Update DECK
 >
 >### Reports :
