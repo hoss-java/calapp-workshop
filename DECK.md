@@ -88,7 +88,7 @@ gantt
 >- [x] 2. Add operators methods
 >- [x] 3. Update documents
 >- [x] 4. Improve
->- [ ] 5. Add doxigen
+>- [x] 5. Add doxigen
 >
 >### Reports :
 >* 
