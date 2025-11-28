@@ -85,7 +85,7 @@ gantt
 >
 >### TODO :
 >- [x] 1. Start with a class that recognize operators
->- [ ] 2. Add operators methods
+>- [x] 2. Add operators methods
 >- [ ] 3. Update documents
 >
 >### Reports :
