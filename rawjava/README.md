@@ -15,6 +15,11 @@ docker compose --env-file ".env.openjdk" -f docker-compose-openjdk.yaml up -d
 
 # to check the openjdk container
 #docker ps
+
+# The conteiner can be removed by using the command below
+docker compose --env-file ".env.openjdk" -f docker-compose-openjdk.yaml down --remove-orphans --rmi local -v
+# to Clean up all caches, images, networks
+docker system prune -a
 ```
 ### Run a java 
 The openjdk container sees `~/github-java` as root folder.
@@ -33,4 +38,11 @@ docker exec -it openjdk java calapp-workshop/rawjava/CalAppV1.java
 3. If the oprator is a valid oprator the result will be printed otherwis an invalid operator error is shown
 4. To exit , an 'exit' instead operators is used.
 
+A summary
+* CalAppV1 uses two standard libraries
+> * `import java.util.Set`
+> * `java.util.Scanner`
+
 ### Improve CalAppV1
+In the CalAppV1 logic, numbers are asked first and then an operator validation is run. It means numbers are asks even the passed operator is invalid!!
+* It could be better to check operator before asking numbers, if the operator is an invalid operator, the main asks again to input a valid operator

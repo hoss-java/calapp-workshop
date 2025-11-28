@@ -1,3 +1,4 @@
+import java.util.Set;
 import java.util.Scanner;
 
 public class CalAppV1 {
@@ -5,13 +6,18 @@ public class CalAppV1 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String operation;
+        Set<String> validOps = Set.of("exit", "+", "-", "*", "/");
 
         System.out.println("Welcome to the Interactive Calculator!");
         System.out.println("Enter 'exit' to quit the calculator.");
 
         while (true) {
-            System.out.print("Enter operation (+, -, *, /) or 'exit': ");
-            operation = scanner.nextLine();
+            while (true) {
+                System.out.print("Enter operation (+, -, *, /) or 'exit': ");
+                operation = scanner.nextLine().trim();
+                if (validOps.contains(operation)) break;
+                System.out.println("Invalid operation. Please enter one of +, -, *, / or 'exit'.");
+            }
 
             if (operation.equalsIgnoreCase("exit")) {
                 break;
