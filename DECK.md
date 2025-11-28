@@ -103,7 +103,7 @@ gantt
 
 
 ## 48-003
-### CalAppV2 ![status](https://img.shields.io/badge/status-ONGOING-yellow)
+### CalAppV2 ![status](https://img.shields.io/badge/status-DONE-brightgreen)
 <details>
     <summary>Details</summary>
 
@@ -118,7 +118,7 @@ gantt
 >- [x] 3. Add doxygen
 >- [x] 4. Update documents
 >- [x] 5. Improve
->- [ ] 6. Update DECK
+>- [x] 6. Update DECK
 >
 >### Reports :
 >* 
@@ -132,7 +132,7 @@ gantt
 
 
 ## 48-004
-### Recode CalAppV2 in a Maven project. ![status](https://img.shields.io/badge/status-NOT--STARTED-lightgrey)
+### Recode CalAppV2 in a Maven project. ![status](https://img.shields.io/badge/status-ONGOING-yellow)
 <details>
     <summary>Details</summary>
 
