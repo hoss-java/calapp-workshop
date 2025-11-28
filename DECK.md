@@ -115,7 +115,7 @@ gantt
 >### TODO :
 >- [x] 1. Start with a class that inputs an expression
 >- [x] 2. Add an expression parser
->- [ ] 3. Add doxigen
+>- [x] 3. Add doxigen
 >- [ ] 4. Update documents
 >- [ ] 5. Improve
 >- [ ] 6. Update DECK

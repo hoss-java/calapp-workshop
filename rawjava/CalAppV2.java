@@ -1,7 +1,25 @@
 import java.util.Scanner;
 import java.util.Stack;
 
+/**
+ * @file CalAppV2.java
+ * @brief Interactive console calculator application.
+ *
+ * This class implements a simple expression parser/evaluator that supports
+ * addition, subtraction, multiplication and division with parentheses.
+ * The application reads expressions from standard input and prints results.
+ * Enter 'exit' to terminate the program.
+ */
 public class CalAppV2 {
+
+    /**
+     * @brief Program entry point.
+     *
+     * Reads expressions from the console in a loop, evaluates them and prints
+     * the result. The loop exits when the user types "exit".
+     *
+     * @param args Command-line arguments (ignored).
+     */
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -30,6 +48,20 @@ public class CalAppV2 {
         System.out.println("Thank you for using the parser. Goodbye!");
     }
 
+    /**
+     * @brief Evaluate an arithmetic expression represented as a string.
+     *
+     * This method parses and evaluates an arithmetic expression containing
+     * positive decimal numbers, the binary operators +, -, *, / and parentheses.
+     * It uses two stacks (one for values, one for operators) and applies the
+     * standard operator precedence and parenthesis rules.
+     *
+     * @param expression The infix arithmetic expression to evaluate.
+     * @return The computed numeric result as a double.
+     * @throws NumberFormatException If a numeric token cannot be parsed.
+     * @throws java.util.EmptyStackException If the expression is malformed.
+     * @throws UnsupportedOperationException For invalid operators or divide-by-zero.
+     */
     public static double evaluate(String expression) {
         char[] tokens = expression.toCharArray();
         Stack<Double> values = new Stack<>();
@@ -76,19 +108,46 @@ public class CalAppV2 {
         return values.pop(); // The final result
     }
 
-    // Method to check if the character is an operator
+    /**
+     * @brief Check whether a character is a supported operator.
+     *
+     * Supported operators: +, -, *, /
+     *
+     * @param c Character to test.
+     * @return true if c is one of the supported operators, false otherwise.
+     */
     private static boolean isOperator(char c) {
         return c == '+' || c == '-' || c == '*' || c == '/';
     }
 
-    // Method to determine precedence of operators
+    /**
+     * @brief Determine if op2 has higher or same precedence than op1.
+     *
+     * This method is used to decide whether to apply operators already on the
+     * operator stack before pushing a new operator op1.
+     *
+     * @param op1 The incoming operator.
+     * @param op2 The operator at the top of the stack.
+     * @return true if op2 has higher or same precedence and is not a parenthesis.
+     */
     private static boolean hasPrecedence(char op1, char op2) {
         if (op2 == '(' || op2 == ')') return false;
         if ((op1 == '*' || op1 == '/') && (op2 == '+' || op2 == '-')) return false;
         return true;
     }
 
-    // Method to apply an operator to two numbers
+    /**
+     * @brief Apply a binary operator to two operands.
+     *
+     * Note: The order of operands when popped from the stack is b then a, so
+     * the operation performed is a <operator> b.
+     *
+     * @param operator The operator character ('+', '-', '*', '/').
+     * @param b The right-hand operand.
+     * @param a The left-hand operand.
+     * @return The result of applying the operator to a and b.
+     * @throws UnsupportedOperationException If operator is invalid or division by zero occurs.
+     */
     private static double applyOperation(char operator, double b, double a) {
         switch (operator) {
             case '+':
