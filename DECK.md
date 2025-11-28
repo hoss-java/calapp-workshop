@@ -74,7 +74,7 @@ gantt
 
 
 ## 48-002
-### CalAppV1 ![status](https://img.shields.io/badge/status-ONGOING-yellow)
+### CalAppV1 ![status](https://img.shields.io/badge/status-DONE-brightgreen)
 <details>
     <summary>Details</summary>
 
@@ -103,7 +103,7 @@ gantt
 
 
 ## 48-003
-### CalAppV2 ![status](https://img.shields.io/badge/status-NOT--STARTED-lightgrey)
+### CalAppV2 ![status](https://img.shields.io/badge/status-ONGOING-yellow)
 <details>
     <summary>Details</summary>
 
