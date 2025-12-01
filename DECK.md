@@ -151,7 +151,7 @@ gantt
 >- [x] 6. Update DECK
 >
 >### Reports :
->* 
+>* see https://github.com/hoss-java/calapp-workshop/blob/main/DECK.md#add-some-tests-to-the-maven-version-of-calappv2-
 >
 >### Steps to test and debugging:
 >- [] 1.
