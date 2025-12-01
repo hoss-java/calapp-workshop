@@ -143,3 +143,14 @@ Two versions of CalApp were coded and stored inside the folder `rawjava`.
 >># To clean up
 >>docker exec -it maven mvn -f calapp-workshop/CalApp clean package
 >>```
+> * Running or building an app add some files to folder `CalApp/target`. They should be ignored by git. The target folder and `.jar` files can be ignored by adding them to `.gitignore`
+> * Aftre creating the simple project above, a file named `App.java` is added to `calapp-workshop/CalApp/src/main/java/com/CalApp/`. To impement the calculator class to the project instead the hello world, it just needs to replace the class `App` with `CalAppV2`  developed throgh [48-003](https://github.com/hoss-java/calapp-workshop/blob/main/DECK.md#calappv2-) ( [code can be found here](https://github.com/hoss-java/calapp-workshop/blob/main/rawjava/CalAppV2.java))
+> **OBS!** In the case of changing class name ( for example `App` to `CalApp`), the file name `App.java` should also be renamed. It also needs to update `pom.xml` to points to new class name and entry points.
+> * **OBS!** Java commands usually uses caches. In the case of changing file names or major changes it need to be clean target folder and caches before running again. To clean caches :
+>>```
+>># To clean up
+>>docker exec -it maven mvn -f calapp-workshop/CalApp clean package
+>>
+>># And then run
+>>docker exec -it maven mvn -f calapp-workshop/CalApp exec:java
+>>```

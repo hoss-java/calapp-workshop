@@ -145,7 +145,7 @@ gantt
 >### TODO :
 >- [x] 1. Recap findings about Maven
 >- [x] 2. Create a simple template for CalApp
->- [ ] 3. Update CalApp template with real code
+>- [x] 3. Update CalApp template with a real code
 >- [ ] 4. Update documents
 >- [ ] 5. Update DECK
 >
