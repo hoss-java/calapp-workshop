@@ -139,11 +139,15 @@ gantt
 >The goal of this card is to Recode CalAppV2 in a Maven project.
 >
 >### DOD  (definition of done):
->CalAppV2 is coded and pushed.
+>CalApp is coded and pushed.
 >Finings are documented.
 >
 >### TODO :
->- [ ] 1. 
+>- [x] 1. Recap findings about Maven
+>- [x] 2. Create a simple template for CalApp
+>- [ ] 3. Update CalApp template with real code
+>- [ ] 4. Update documents
+>- [ ] 5. Update DECK
 >
 >### Reports :
 >* 
@@ -161,10 +165,10 @@ gantt
 <details>
     <summary>Details</summary>
 
->The goal of this card is to add some tests to the maven version of CalAppV2.
+>The goal of this card is to add some tests to the maven version of CalApp.
 >
 >### DOD  (definition of done):
->CalAppV2 is coded and pushed.
+>CalApp is coded and pushed.
 >Finings are documented.
 >
 >### TODO :
@@ -182,7 +186,7 @@ gantt
 
 
 ## 48-006
-### Recode CalAppV2 as a spring project ![status](https://img.shields.io/badge/status-NOT--STARTED-lightgrey)
+### Recode CalApp as a spring project ![status](https://img.shields.io/badge/status-NOT--STARTED-lightgrey)
 <details>
     <summary>Details</summary>
 
@@ -207,7 +211,7 @@ gantt
 
 
 ## 48-007
-### Impliment CalAppV2 to Tomcat as a service ![status](https://img.shields.io/badge/status-NOT--STARTED-lightgrey)
+### Impliment CalApp to Tomcat as a service ![status](https://img.shields.io/badge/status-NOT--STARTED-lightgrey)
 <details>
     <summary>Details</summary>
 
