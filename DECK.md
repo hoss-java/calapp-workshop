@@ -132,7 +132,7 @@ gantt
 
 
 ## 48-004
-### Recode CalAppV2 in a Maven project. ![status](https://img.shields.io/badge/status-ONGOING-yellow)
+### Recode CalAppV2 in a Maven project. ![status](https://img.shields.io/badge/status-DONE-brightgreen)
 <details>
     <summary>Details</summary>
 
@@ -146,9 +146,9 @@ gantt
 >- [x] 1. Recap findings about Maven
 >- [x] 2. Create a simple template for CalApp
 >- [x] 3. Update CalApp template with a real code
->- [x] 4. Taking out CalApp class from the main App class
->- [ ] 5. Update documents
->- [ ] 6. Update DECK
+>- [x] 4. Pulling out CalApp class from the main App class
+>- [x] 5. Update documents
+>- [x] 6. Update DECK
 >
 >### Reports :
 >* 
@@ -162,7 +162,7 @@ gantt
 
 
 ## 48-005
-### Add some tests to the maven version of CalAppV2.  ![status](https://img.shields.io/badge/status-NOT--STARTED-lightgrey)
+### Add some tests to the maven version of CalAppV2. ![status](https://img.shields.io/badge/status-ONGOING-yellow)
 <details>
     <summary>Details</summary>
 
