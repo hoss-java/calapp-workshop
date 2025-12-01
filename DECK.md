@@ -146,8 +146,9 @@ gantt
 >- [x] 1. Recap findings about Maven
 >- [x] 2. Create a simple template for CalApp
 >- [x] 3. Update CalApp template with a real code
->- [ ] 4. Update documents
->- [ ] 5. Update DECK
+>- [x] 4. Taking out CalApp class from the main App class
+>- [ ] 5. Update documents
+>- [ ] 6. Update DECK
 >
 >### Reports :
 >* 

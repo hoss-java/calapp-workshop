@@ -154,3 +154,4 @@ Two versions of CalApp were coded and stored inside the folder `rawjava`.
 >># And then run
 >>docker exec -it maven mvn -f calapp-workshop/CalApp exec:java
 >>```
+> * To make the code more generic, the `CalApp` class was pulled out of the main file and moved to a new file named `ExpressionParser.java` to use as a library.
