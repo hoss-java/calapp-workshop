@@ -211,4 +211,56 @@ Two versions of CalApp were coded and stored inside the folder `rawjava`.
 >>>    return (Boolean) m.invoke(null, op1, op2);
 >>>}
 >>>```
->> * It can be simple as above or it can be more generic to get method name and parameters and invoke it. For now, it is enough to have one invoke per private method.
+>> * It can be simple as above or it can be more generic to get method names and parameters to invoke. For now, it is enough to have one invoke per private method.
+>> * Ok now the first has been done. There are 2 more private method that need invoke to test. To avoid code invoke for each private method it is better to code a generik invoke.
+>>> * First try : The class name is known, only methods and parameteres vary - The invoke below gets a method name and args, and pass them to the original method (without any arg validity check)
+>>>>```
+>>>>@SuppressWarnings("unchecked")
+>>>>private static <R> R invokeStaticByName(String methodName, Object... args) throws Exception {
+>>>>    Class<?> cls = ExpressionParser.class;
+>>>>    Method found = null;
+>>>>    int argCount = args == null ? 0 : args.length;
+>>>>
+>>>>    for (Method m : cls.getDeclaredMethods()) {
+>>>>        if (!m.getName().equals(methodName)) continue;
+>>>>        if (!Modifier.isStatic(m.getModifiers())) continue;
+>>>>        if (m.getParameterTypes().length != argCount) continue;
+>>>>        found = m;
+>>>>        break;
+>>>>    }
+>>>>
+>>>>    if (found == null) {
+>>>>        throw new NoSuchMethodException("No matching static method '" + methodName + "' with " + argCount + " parameters found on " + cls.getName());
+>>>>    }
+>>>>
+>>>>    found.setAccessible(true);
+>>>>    Object ret = found.invoke(null, args); // may throw if args incompatible
+>>>>    return (R) ret;
+>>>>}
+>>>>```
+>>> * Improve the invoke: It can also been improved by sending the class name as a parameter
+>>>>```
+>>>>@SuppressWarnings("unchecked")
+>>>>private static <R> R invokeStaticByName(String className, String methodName, Object... args) throws Exception {
+>>>>    Class<?> cls = Class.forName(className);
+>>>>    Method found = null;
+>>>>    int argCount = args == null ? 0 : args.length;
+>>>>
+>>>>    for (Method m : cls.getDeclaredMethods()) {
+>>>>        if (!m.getName().equals(methodName)) continue;
+>>>>        if (!Modifier.isStatic(m.getModifiers())) continue;
+>>>>        if (m.getParameterTypes().length != argCount) continue;
+>>>>        found = m;
+>>>>        break;
+>>>>    }
+>>>>
+>>>>    if (found == null) {
+>>>>        throw new NoSuchMethodException("No matching static method '" + methodName + "' with " + argCount + " parameters found on " + cls.getName());
+>>>>    }
+>>>>
+>>>>    found.setAccessible(true);
+>>>>    Object ret = found.invoke(null, args); // may throw IllegalArgumentException if args incompatible
+>>>>    return (R) ret;
+>>>>}
+>>>>```
+>>> * It can also improved by adding validety check for args, but it can be skipped for now

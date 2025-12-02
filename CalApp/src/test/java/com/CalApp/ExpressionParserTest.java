@@ -31,11 +31,28 @@ public class ExpressionParserTest
         return new TestSuite( ExpressionParserTest.class );
     }
 
-    // simple reflection helper: invokes isOperator static method with one char arg
-    private static boolean invokeIsOperator(char ch) throws Exception {
-        Method m = ExpressionParser.class.getDeclaredMethod("isOperator", char.class);
-        m.setAccessible(true);
-        return (Boolean) m.invoke(null, ch); // static method -> null instance
+    // simple reflection helper: invokes a private static method with one char arg
+    @SuppressWarnings("unchecked")
+    private static <R> R invokeStaticByName(String className, String methodName, Object... args) throws Exception {
+        Class<?> cls = Class.forName(className);
+        Method found = null;
+        int argCount = args == null ? 0 : args.length;
+
+        for (Method m : cls.getDeclaredMethods()) {
+            if (!m.getName().equals(methodName)) continue;
+            if (!Modifier.isStatic(m.getModifiers())) continue;
+            if (m.getParameterTypes().length != argCount) continue;
+            found = m;
+            break;
+        }
+
+        if (found == null) {
+            throw new NoSuchMethodException("No matching static method '" + methodName + "' with " + argCount + " parameters found on " + cls.getName());
+        }
+
+        found.setAccessible(true);
+        Object ret = found.invoke(null, args); // may throw IllegalArgumentException if args incompatible
+        return (R) ret;
     }
 
     /**
@@ -63,7 +80,7 @@ public class ExpressionParserTest
         for (Object[] c : cases) {
             char ch = (Character) c[0];
             boolean expected = (Boolean) c[1];
-            boolean actual = invokeIsOperator(ch);
+            boolean actual = invokeStaticByName("ExpressionParser","isOperator",ch);
             assertEquals("isOperator(" + ch + ")", expected, actual);
         }
     }
