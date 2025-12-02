@@ -52,6 +52,8 @@ import com.CalApp.lib.ExpressionParser;
      * @param args Command-line arguments (ignored).
      */
     public static void expressionCalculator(String[] args) {
+        ExpressionParser myExpressionParser = new ExpressionParser();
+
         Scanner scanner = new Scanner(System.in);
         String input;
 
@@ -67,7 +69,7 @@ import com.CalApp.lib.ExpressionParser;
             }
 
             try {
-                double result = ExpressionParser.evaluate(input);
+                double result = myExpressionParser.evaluate(input);
                 System.out.println("Result: " + result);
             } catch (Exception e) {
                 System.out.println("Error: " + e.getMessage());

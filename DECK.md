@@ -176,11 +176,12 @@ gantt
 >- [x] 1. Recap how to run a test
 >- [x] 2. Code an empty test
 >- [x] 3. Update the empty test to test a method
->- [ ] 4. Try to use stub and mock
->- [ ] 5. Create and code test file for each file (unit test)
->- [ ] 6. Create a block test
->- [ ] 7. Update documents
->- [ ] 8. Update DECK
+>- [x] 4. Try to use stub and mock
+>- [x] 5. Create and code test file for each file (unit test)
+>- [ ] 6. Update unit tests to JUnit 5
+>- [ ] 7. Create a block test
+>- [ ] 8. Update documents
+>- [ ] 9. Update DECK
 >
 >### Reports :
 >* 

@@ -277,3 +277,9 @@ Two versions of CalApp were coded and stored inside the folder `rawjava`.
 >>> * Improve the invoke: It can also been improved by sending the class name as a parameter
 >>> * It can also improved by adding validety check for args, but it can be skipped for now
 >> * Now all private methods have its own test, time to develop test for the public method `evaluate`
+>>> * `evaluate` uses three other methods (`isOperator`, `hasPrecedence`, `applyOperation`) that have alreade tested and no need to tests them through `evaluate`
+>>> * `evaluate` mostly works with stackes and finding tokens . It has no error handler. In a real case a unit test for a method test the logic of the method itself but in the case of `evaluate` it has already known that the method only works for some specefic casses. So there is no need to code a real test for this method
+>>> * However if there was a plan to code a test for `evaluate`, it needed to mock `isOperator`, `hasPrecedence` and `applyOperation`. As I understood JUnit does not support mocking. Ther is another framework named `mockito` that can be used to mock methods. **`mockito`** can be learned through the next workshop.
+>>> * To keep focused on JUnit, a stub can be used to develop a simple test for `evaluate`. The goal of the code a test for `evaluate` is to learn how to implement a stub,
+>>> * `isOperator`, `hasPrecedence` and `applyOperation` have been defined as `private static`. To make it possible to overriden a method it cant't be `private static`, it can be changed to `protect` but as the tests that have been done before, they use an invoker that needs to define methods as `static`. In other words in the case of `ExpressionParser` it is not possible to overriden helper methods.
+>>> * An empty stub was created to use to test `evaluate` but in fact the stub does nothing in this case, it can be seen as learning session.

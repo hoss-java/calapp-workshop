@@ -172,8 +172,13 @@ public class ExpressionParserTest
         }
     }
 
-    public void testEvaluate()
-    {
-        assertTrue( true );
+    // test-only stub that overrides helper methods
+    static class StubExpressionParser extends ExpressionParser {
+    }
+
+    public void testEvaluate(){
+        StubExpressionParser parser = new StubExpressionParser();
+        double result = parser.evaluate("2 + 3 * 4"); // uses overridden helpers
+        assertEquals(14.0, result, 1e-9);
     }
 }
