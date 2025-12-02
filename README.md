@@ -238,29 +238,42 @@ Two versions of CalApp were coded and stored inside the folder `rawjava`.
 >>>>    return (R) ret;
 >>>>}
 >>>>```
+>>> * There is a problem, if invoke faces an issue it does not return the issue/ error to the test, so it needs to use try/catch to invoke also. Now it become as below
+>>>>```
+>>>>    @SuppressWarnings("unchecked")
+>>>>    private static <R> R invokeStaticByName(String methodName, Object... args) throws Exception {
+>>>>        Class<?> cls = ExpressionParser.class;
+>>>>        Method found = null;
+>>>>        int argCount = args == null ? 0 : args.length;
+>>>>
+>>>>        for (Method m : cls.getDeclaredMethods()) {
+>>>>            if (!m.getName().equals(methodName)) continue;
+>>>>            if (!Modifier.isStatic(m.getModifiers())) continue;
+>>>>            if (m.getParameterTypes().length != argCount) continue;
+>>>>            found = m;
+>>>>            break;
+>>>>        }
+>>>>
+>>>>        if (found == null) {
+>>>>            throw new NoSuchMethodException("No matching static method '" + methodName + "' with " + argCount + " parameters found on " + cls.getName());
+>>>>        }
+>>>>
+>>>>        found.setAccessible(true);
+>>>>        try {
+>>>>            Object ret = found.invoke(null, args);
+>>>>            return (R) ret;
+>>>>        } catch (InvocationTargetException ite) {
+>>>>            // Method threw an exception — forward the underlying cause to the caller/test
+>>>>            Throwable cause = ite.getTargetException();
+>>>>            if (cause instanceof Exception) throw (Exception) cause;
+>>>>            // if it's an error or non-Exception throwable, wrap or rethrow as appropriate
+>>>>            throw new RuntimeException("Underlying method threw an error", cause);
+>>>>        } catch (IllegalAccessException | IllegalArgumentException e) {
+>>>>            // Reflection-level problems — forward to caller/test
+>>>>            throw e;
+>>>>        }
+>>>>    }
+>>>>```
 >>> * Improve the invoke: It can also been improved by sending the class name as a parameter
->>>>```
->>>>@SuppressWarnings("unchecked")
->>>>private static <R> R invokeStaticByName(String className, String methodName, Object... args) throws Exception {
->>>>    Class<?> cls = Class.forName(className);
->>>>    Method found = null;
->>>>    int argCount = args == null ? 0 : args.length;
->>>>
->>>>    for (Method m : cls.getDeclaredMethods()) {
->>>>        if (!m.getName().equals(methodName)) continue;
->>>>        if (!Modifier.isStatic(m.getModifiers())) continue;
->>>>        if (m.getParameterTypes().length != argCount) continue;
->>>>        found = m;
->>>>        break;
->>>>    }
->>>>
->>>>    if (found == null) {
->>>>        throw new NoSuchMethodException("No matching static method '" + methodName + "' with " + argCount + " parameters found on " + cls.getName());
->>>>    }
->>>>
->>>>    found.setAccessible(true);
->>>>    Object ret = found.invoke(null, args); // may throw IllegalArgumentException if args incompatible
->>>>    return (R) ret;
->>>>}
->>>>```
 >>> * It can also improved by adding validety check for args, but it can be skipped for now
+>> * Now all private methods have its own test, time to develop test for the public method `evaluate`
