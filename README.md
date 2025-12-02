@@ -199,4 +199,16 @@ Two versions of CalApp were coded and stored inside the folder `rawjava`.
 >># To run main
 >>docker exec -it maven mvn -f calapp-workshop/CalApp exec:java
 >>```
-> * Now CalApp has two empty test classes, one for `CalApp.java` and one for the lib `ExpressionParser.java`. The test classes are JUnit 4 base. The should be updated to JUnit 5 when a some tests were coded.
+> * Now CalApp has two empty test classes, one for `CalApp.java` and one for the lib `ExpressionParser.java`. The test classes are JUnit 3 base. The should be updated to JUnit 4 or 5 when a some tests were coded.
+> * To make the code for CalApp more generic to support multi libraries, `ExpressionParser.cal` method was moved to `CalApp` class and the name was changed to `expressionCalculator`, now `ExpressionParser` is more like a lib and make it easyer to write tests.
+> * It posible to  write test for `CalApp` methods but as the aim of this job (learning), it's skipped and `ExpressionParser` is focused to develop tests and learn about test frameworks. So `CalAppTest` is an empty test class tests nothing.
+> * `ExpressionParser` class has 4 methods one is public (`evaluate`) and three is private (`isOperator`, `hasPrecedence`, `applyOperation`). Here is a challenge to how to test a private method :)
+>> * There is no access to a private method from outside of the class so it needs to be invoked. Here is a simple invoke for `hasPrecedence`
+>>>```
+>>>private static boolean invokeHasPrecedence(char op1, char op2) throws Exception {
+>>>    Method m = ExpressionParser.class.getDeclaredMethod("hasPrecedence", char.class, char.class);
+>>>    m.setAccessible(true);
+>>>    return (Boolean) m.invoke(null, op1, op2);
+>>>}
+>>>```
+>> * It can be simple as above or it can be more generic to get method name and parameters and invoke it. For now, it is enough to have one invoke per private method.

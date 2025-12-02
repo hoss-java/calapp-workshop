@@ -1,6 +1,5 @@
 package com.CalApp.lib;
 
-import java.util.Scanner;
 import java.util.Stack;
 
 /**
@@ -13,42 +12,6 @@ import java.util.Stack;
  * Enter 'exit' to terminate the program.
  */
 public class ExpressionParser {
-
-    /**
-     * @brief Program entry point.
-     *
-     * Reads expressions from the console in a loop, evaluates them and prints
-     * the result. The loop exits when the user types "exit".
-     *
-     * @param args Command-line arguments (ignored).
-     */
-
-    public static void cal(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        String input;
-
-        System.out.println("Welcome to the Interactive Expression Parser!");
-        System.out.println("Enter an expression to evaluate or type 'exit' to quit:");
-
-        while (true) {
-            System.out.print("> ");
-            input = scanner.nextLine();
-
-            if (input.equalsIgnoreCase("exit")) {
-                break;
-            }
-
-            try {
-                double result = evaluate(input);
-                System.out.println("Result: " + result);
-            } catch (Exception e) {
-                System.out.println("Error: " + e.getMessage());
-            }
-        }
-
-        scanner.close();
-        System.out.println("Thank you for using the parser. Goodbye!");
-    }
 
     /**
      * @brief Evaluate an arithmetic expression represented as a string.
