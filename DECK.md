@@ -162,7 +162,7 @@ gantt
 
 
 ## 48-005
-### Add some tests to the maven version of CalAppV2. ![status](https://img.shields.io/badge/status-ONGOING-yellow)
+### Add some tests to the maven version of CalApp. ![status](https://img.shields.io/badge/status-ONGOING-yellow)
 <details>
     <summary>Details</summary>
 
@@ -173,7 +173,14 @@ gantt
 >Finings are documented.
 >
 >### TODO :
->- [ ] 1. 
+>- [x] 1. Recap how to run a test
+>- [x] 2. Code an empty test
+>- [ ] 3. Update the empty test to test a method
+>- [ ] 4. Try to use stub and mock
+>- [ ] 5. Create and code test file for each file (unit test)
+>- [ ] 6. Create a block test
+>- [ ] 7. Update documents
+>- [ ] 8. Update DECK
 >
 >### Reports :
 >* 

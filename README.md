@@ -155,3 +155,48 @@ Two versions of CalApp were coded and stored inside the folder `rawjava`.
 >>docker exec -it maven mvn -f calapp-workshop/CalApp exec:java
 >>```
 > * To make the code more generic, the `CalApp` class was pulled out of the main file and moved to a new file named `ExpressionParser.java` to use as a library.
+
+* Develop some tests for the maven version of CalApp
+> * Acording to the java frameworks spike, JUnit is a widely used open-source testing framework for writing and running automated unit tests in Java.
+>> * There are two key versions of JUnit, JUnit 4 and JUnit 5.
+>> * JUnit 5 has changed the name to JUnit Jupiter.
+>> * Unit 5 is modular and composed of JUnit Platform, JUnit Jupiter (API & engine), and JUnit Vintage for legacy tests.
+> * A Maven project created through the commands explained before has a simple test part but as below which means using the default version of JUinit
+>>```
+>>.
+>>.
+>>  <dependencies>
+>>    <dependency>
+>>      <groupId>junit</groupId>
+>>      <artifactId>junit</artifactId>
+>>      <version>3.8.1</version>
+>>      <scope>test</scope>
+>>    </dependency>
+>>  </dependencies>
+>>.
+>>.
+>>```
+> **OBS!** During getting hands on coding tests and getting them working, I found the pom.xml file developed during the spike has an issue. In the build part, `configuration` was placed in side executions, that forcet Maven to build jar file for each exacution. Now it has been fixed.
+>>```
+>>      <configuration>
+>>        <mainClass>com.CalApp.CalApp</mainClass>
+>>      </configuration>
+>>```
+> * To run tests :
+>>```
+>># To clean temporary files and caches
+>>docker exec -it maven mvn -f calapp-workshop/CalApp clean
+>> # To compile and creating jar file
+>>docker exec -it maven mvn -f calapp-workshop/CalApp coompile
+>># or
+>>docker exec -it maven mvn -f calapp-workshop/CalApp clean coompile
+>>
+>># To run tests
+>>docker exec -it maven mvn -f calapp-workshop/CalApp test
+>>
+>># To Create package
+>>docker exec -it maven mvn -f calapp-workshop/CalApp package
+>># To run main
+>>docker exec -it maven mvn -f calapp-workshop/CalApp exec:java
+>>```
+> * Now CalApp has two empty test classes, one for `CalApp.java` and one for the lib `ExpressionParser.java`. The test classes are JUnit 4 base. The should be updated to JUnit 5 when a some tests were coded.

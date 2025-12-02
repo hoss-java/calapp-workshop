@@ -30,21 +30,25 @@
           </archive>
         </configuration>
       </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>exec-maven-plugin</artifactId>
-        <version>1.2.1</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>java</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <mainClass>com.CalApp.CalApp</mainClass>
-        </configuration>
-      </plugin>
+    <!-- exec plugin only for running the app (not bound to test) -->
+    <plugin>
+      <groupId>org.codehaus.mojo</groupId>
+      <artifactId>exec-maven-plugin</artifactId>
+      <version>3.1.0</version>
+      <configuration>
+        <mainClass>com.CalApp.CalApp</mainClass>
+      </configuration>
+      <!-- optional execution bound to package phase (won't run during mvn test) -->
+      <executions>
+        <execution>
+          <id>run-main</id>
+          <phase>package</phase>
+          <goals>
+            <goal>java</goal>
+          </goals>
+        </execution>
+      </executions>
+    </plugin>
     </plugins>
   </build>
 </project>
