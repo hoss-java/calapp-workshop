@@ -374,4 +374,76 @@ Two versions of CalApp were coded and stored inside the folder `rawjava`.
 >>>>- Replace try/catch exception tests with assertThrows.
 >>>>- Stop extending TestCase and annotate methods with @Test.
 >>>>- Add junit-jupiter dependency and update build/test runner.
+>>>>
 >> **OBS!** There is no need to work with JUnit 3 , but the method use by JUnit 3 is a basic method that can be used to stup classes with is so important to develop block tests. I did it to learn how to develop stups on Java test env.
+> * Now working on a block test. In a block test it needs to tests how it works all code together. There is no need to test system/or standard libraried method/functions. In other words a real test should be avoid goes through methods that are not related to the main code. It lets to have control on all parts of testes.
+>> * The CalApp has a main method named `expressionCalculator`, The method calls `ExpressionParser.evaluate` to calculate expressions but in the same time uses some standard input/ouput methods to get expressions from the user and printing results. My plan is to find a way to create stubs for `scanner` methods and `println`
+>> * It's not easy to override system libraries methods. For now, `expressionCalculator` uses standard input/output directly via classes from the standard library (e.g., `Scanner`). If the input and output streams are injected into `expressionCalculator`, I can control its I/O for testing. In other words it needs to updated `expressionCalculator` first.
+>>> * Now `expressionCalculator` gets in/out classes as input. The code was also updated to use println and scanner form the injected in/out.
+>>>>```
+>>>>// old one
+>>>>public static void expressionCalculator(String[] args)
+>>>>// new one
+>>>>public static void expressionCalculator(InputStream in, PrintStream out, String[] args)
+>>>>```
+>>> * To use the new `expressionCalculator` in the main code (for example `CalApp.main`), it just needs to pass standard inputs/outputs as in and out parameters -> `expressionCalculator(System.in, System.out,args);`
+>>> * Now to develop a test for `expressionCalculator` , it needs to first to define/code a new in/out instead standard in/out. To do this , two new simple classes were coded :
+>>>> * `linesToInputStream` as in
+>>>> * `RecordingPrintStream` as out
+>>> * And finally a simple code for test was added to call `expressionCalculator` with a controlled in/out
+>>>>```
+>>>>void testExpressionCalculator_withStubs() throws Exception {
+>>>>    // Arrange
+>>>>    InputStream testIn = linesToInputStream("2 + 3 * 4", "(2 + 3) * 4", "exit");
+>>>>    RecordingPrintStream testOut = new RecordingPrintStream();
+>>>>
+>>>>    // Act
+>>>>    CalApp.expressionCalculator(testIn, testOut, new String[0]);
+>>>>
+>>>>    // Assert - check important prompts and results were printed
+>>>>    List<String> out = testOut.getLines();
+>>>>    assertTrue(out.stream().anyMatch(s -> s.contains("Welcome to the Interactive Expression Parser!")),
+>>>>        () -> "Welcome message missing. Output:\n" + String.join("\n", out));
+>>>>    assertTrue(out.stream().anyMatch(s -> s.contains("Enter an expression to evaluate")),
+>>>>        () -> "Prompt message missing. Output:\n" + String.join("\n", out));
+>>>>    assertTrue(out.stream().anyMatch(s -> s.contains("Result: 14.0")),
+>>>>        () -> "Expected result 14.0 missing. Output:\n" + String.join("\n", out));
+>>>>    assertTrue(out.stream().anyMatch(s -> s.contains("Result: 20.0")),
+>>>>        () -> "Expected result 20.0 missing. Output:\n" + String.join("\n", out));
+>>>>    assertTrue(out.stream().anyMatch(s -> s.contains("Thank you for using the parser. Goodbye!")),
+>>>>        () -> "Goodbye message missing. Output:\n" + String.join("\n", out));
+>>>>}
+>>>>```
+>> * The idea to code test above was learning, but in the case of `expressionCalculator`, it can be done easier by using standard in/our features, Here is a simple solution
+>>>>```
+>>>>public void testExpressionCalculator() throws Exception {
+>>>>    String userInput = "2 + 3 * 4\n(2 + 3) * 4\nexit\n";
+>>>>    ByteArrayInputStream in = new ByteArrayInputStream(userInput.getBytes());
+>>>>    System.setIn(in);
+>>>>
+>>>>    // Capture System.out
+>>>>    ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+>>>>    PrintStream originalOut = System.out;
+>>>>    System.setOut(new PrintStream(outContent));
+>>>>
+>>>>    try {
+>>>>        // Run the CLI method under test
+>>>>        CalApp.expressionCalculator(System.in, System.out,new String[0]);
+>>>>
+>>>>        // Read captured output
+>>>>        String output = outContent.toString();
+>>>>
+>>>>        // Basic assertions: prompts and results present
+>>>>        assertTrue(output.contains("Welcome to the Interactive Expression Parser!"));
+>>>>        assertTrue(output.contains("Enter an expression to evaluate"));
+>>>>        assertTrue(output.contains(">")); // prompt
+>>>>        assertTrue(output.contains("Result: 14.0")); // 2 + 3 * 4 -> 14
+>>>>        assertTrue(output.contains("Result: 20.0")); // (2 + 3) * 4 -> 20
+>>>>        assertTrue(output.contains("Thank you for using the parser. Goodbye!"));
+>>>>    } finally {
+>>>>        // Restore original streams
+>>>>        System.setOut(originalOut);
+>>>>        System.setIn(System.in);
+>>>>    }
+>>>>}
+>>>>```

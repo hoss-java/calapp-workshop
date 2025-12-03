@@ -162,7 +162,7 @@ gantt
 
 
 ## 48-005
-### Add some tests to the maven version of CalApp. ![status](https://img.shields.io/badge/status-ONGOING-yellow)
+### Add some tests to the maven version of CalApp. ![status](https://img.shields.io/badge/status-DONE-brightgreen)
 <details>
     <summary>Details</summary>
 
@@ -179,12 +179,12 @@ gantt
 >- [x] 4. Try to use stub and mock
 >- [x] 5. Create and code test file for each file (unit test)
 >- [x] 6. Update unit tests to JUnit 5
->- [ ] 7. Create a block test
->- [ ] 8. Update documents
->- [ ] 9. Update DECK
+>- [x] 7. Create a block test
+>- [x] 8. Update documents
+>- [x] 9. Update DECK
 >
 >### Reports :
->* 
+>* see https://github.com/hoss-java/calapp-workshop/blob/main/DECK.md#add-some-tests-to-the-maven-version-of-calappv2-
 >
 >### Steps to test and debugging:
 >- [] 1.
@@ -195,7 +195,7 @@ gantt
 
 
 ## 48-006
-### Recode CalApp as a spring project ![status](https://img.shields.io/badge/status-NOT--STARTED-lightgrey)
+### Recode CalApp as a spring project ![status](https://img.shields.io/badge/status-ONGOING-yellow)
 <details>
     <summary>Details</summary>
 
