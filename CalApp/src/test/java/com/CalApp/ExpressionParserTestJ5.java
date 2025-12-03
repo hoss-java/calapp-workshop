@@ -1,8 +1,7 @@
 package com.CalApp.lib;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
@@ -11,27 +10,8 @@ import java.lang.reflect.InvocationTargetException;
 /**
  * Unit test for ExpressionParser lib.
  */
-public class ExpressionParserTest 
-    extends TestCase
+class ExpressionParserTestJ5
 {
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public ExpressionParserTest( String testName )
-    {
-        super( testName );
-    }
-
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( ExpressionParserTest.class );
-    }
-
     // simple reflection helper: invokes a private static method with one char arg
     @SuppressWarnings("unchecked")
     private static <R> R invokeStaticByName(String methodName, Object... args) throws Exception {
@@ -77,7 +57,8 @@ public class ExpressionParserTest
      * This class uses JUnit 3 (extends TestCase) and contains a single test that
      * groups multiple cases in an array for concise verification.
      */
-    public void testIsOperator() throws Exception {
+    @Test
+    void testIsOperator() throws Exception {
         Object[][] cases = new Object[][] {
             {'+', Boolean.TRUE},
             {'-', Boolean.TRUE},
@@ -93,7 +74,7 @@ public class ExpressionParserTest
             char ch = (Character) c[0];
             boolean expected = (Boolean) c[1];
             boolean actual = invokeStaticByName("isOperator",ch);
-            assertEquals("isOperator(" + ch + ")", expected, actual);
+            assertEquals("isOperator(" + ch + ")", expected == actual);
         }
     }
 
@@ -107,7 +88,8 @@ public class ExpressionParserTest
      * This class uses JUnit 3 (extends TestCase) and contains a single test that
      * groups multiple cases in an array for concise verification.
      */
-    public void testHasPrecedence() throws Exception {
+    @Test
+    void testHasPrecedence() throws Exception {
         // array of inputs and expected results: {op1, op2, expected}
         Object[][] cases = new Object[][] {
             {'+', '(', Boolean.FALSE},
@@ -125,7 +107,7 @@ public class ExpressionParserTest
             char op2 = (Character) c[1];
             boolean expected = (Boolean) c[2];
             boolean actual = invokeStaticByName("hasPrecedence",op1, op2);
-            assertEquals("hasPrecedence(" + op1 + "," + op2 + ")", expected, actual);
+            assertEquals("hasPrecedence(" + op1 + "," + op2 + ")", expected == actual);
         }
     }
 
@@ -139,7 +121,8 @@ public class ExpressionParserTest
      * This class uses JUnit 3 (extends TestCase) and contains a single test that
      * groups multiple cases in an array for concise verification.
      */
-    public void testApplyOperationTable() throws Exception {
+    @Test
+    void testApplyOperationTable() throws Exception {
         // table: {operator, b, a, expectedDouble (nullable), expectedException (String or null)}
         Object[][] cases = new Object[][] {
             {'+', 2.0, 3.0, 5.0, null},
@@ -159,14 +142,17 @@ public class ExpressionParserTest
 
             if (expectedErr == null) {
                 double actual = invokeStaticByName("applyOperation",op, b, a);
-                assertEquals("applyOperation(" + op + "," + b + "," + a + ")", expected.doubleValue(), actual, 1e-9);
+                assertEquals(expected.doubleValue(),
+                             actual,
+                             1e-9,
+                             () -> "applyOperation(" + op + "," + b + "," + a + ")");
             } else {
                 try {
                     invokeStaticByName("applyOperation",op, b, a);
                     fail("Expected UnsupportedOperationException for op=" + op);
                 } catch (UnsupportedOperationException e) {
-                    assertTrue("Exception message should contain expected text",
-                        e.getMessage().contains(expectedErr));
+                    assertTrue(e.getMessage().contains(expectedErr),
+                        ()->"Exception message should contain expected text");
                 }
             }
         }
@@ -176,9 +162,10 @@ public class ExpressionParserTest
     static class StubExpressionParser extends ExpressionParser {
     }
 
-    public void testEvaluate(){
+    @Test
+    void testEvaluate(){
         StubExpressionParser parser = new StubExpressionParser();
         double result = parser.evaluate("2 + 3 * 4"); // uses overridden helpers
-        assertEquals(14.0, result, 1e-9);
+        assertEquals(14.0, result, 1e-9, () -> "expected 14.0 but was " + result);
     }
 }

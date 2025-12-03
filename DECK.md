@@ -178,7 +178,7 @@ gantt
 >- [x] 3. Update the empty test to test a method
 >- [x] 4. Try to use stub and mock
 >- [x] 5. Create and code test file for each file (unit test)
->- [ ] 6. Update unit tests to JUnit 5
+>- [x] 6. Update unit tests to JUnit 5
 >- [ ] 7. Create a block test
 >- [ ] 8. Update documents
 >- [ ] 9. Update DECK

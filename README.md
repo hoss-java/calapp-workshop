@@ -283,3 +283,95 @@ Two versions of CalApp were coded and stored inside the folder `rawjava`.
 >>> * To keep focused on JUnit, a stub can be used to develop a simple test for `evaluate`. The goal of the code a test for `evaluate` is to learn how to implement a stub,
 >>> * `isOperator`, `hasPrecedence` and `applyOperation` have been defined as `private static`. To make it possible to overriden a method it cant't be `private static`, it can be changed to `protect` but as the tests that have been done before, they use an invoker that needs to define methods as `static`. In other words in the case of `ExpressionParser` it is not possible to overriden helper methods.
 >>> * An empty stub was created to use to test `evaluate` but in fact the stub does nothing in this case, it can be seen as learning session.
+>> * Now moving to JUnit 5
+>>> * Tests files were doblicated and renamed to `ExpressionParserTestJ3.java` and `ExpressionParserTestJ5.java`
+>>> * `ExpressionParserTestJ3.java` is a copy of the tests done above, and `ExpressionParserTestJ5.java` is the file that is planned to update for Junit5
+>>> * It needs first to add dependencies to `pom.xml`
+>>>> * Current dependencies added for JUnit3 (TestCase)
+>>>>>```
+>>>>>  <dependencies>
+>>>>>    <dependency>
+>>>>>      <groupId>junit</groupId>
+>>>>>      <artifactId>junit</artifactId>
+>>>>>      <version>3.8.1</version>
+>>>>>      <scope>test</scope>
+>>>>>    </dependency>
+>>>>>  </dependencies>
+>>>>>```
+>>>> * Changes to support both JUnit3 (TestCase) and Junit5
+>>>>>```
+>>>>>  <properties>
+>>>>>    <maven.compiler.source>1.8</maven.compiler.source>
+>>>>>    <maven.compiler.target>1.8</maven.compiler.target>
+>>>>>    <junit-jupiter.version>5.1.0</junit-jupiter.version>
+>>>>>    <!-- optional : if we want to use a junit4 specific version -->
+>>>>>    <junit.version>4.12</junit.version>
+>>>>>  </properties>
+>>>>>  <dependencies>
+>>>>>    <!--JUnit Jupiter Engine to depend on the JUnit5 engine and JUnit 5 API -->
+>>>>>    <dependency>
+>>>>>      <groupId>org.junit.jupiter</groupId>
+>>>>>      <artifactId>junit-jupiter-engine</artifactId>
+>>>>>      <version>${junit-jupiter.version}</version>
+>>>>>      <scope>test</scope>
+>>>>>    </dependency>
+>>>>>    <!--JUnit Jupiter Engine to depend on the JUnit4 engine and JUnit 4 API  -->
+>>>>>    <dependency>
+>>>>>      <groupId>org.junit.vintage</groupId>
+>>>>>      <artifactId>junit-vintage-engine</artifactId>
+>>>>>      <version>${junit-jupiter.version}</version>
+>>>>>    </dependency>
+>>>>>    <!-- Optional : override the JUnit 4 API version provided by junit-vintage-engine -->
+>>>>>    <dependency>
+>>>>>      <groupId>junit</groupId>
+>>>>>      <artifactId>junit</artifactId>
+>>>>>      <version>${junit.version}</version>
+>>>>>      <scope>test</scope>
+>>>>>    </dependency>
+>>>>> </dependencies>
+>>>>>```
+>>> * Here is some changes needed to move to JUnit5
+>>>>Brief summary — key differences between JUnit 3 and JUnit 5:
+>>>>- Test model
+>>>>  - JUnit 3: tests extend junit.framework.TestCase; test methods named testXxx().
+>>>>  - JUnit 5: tests are plain classes with @Test annotations (org.junit.jupiter.api.Test); no need to extend a base class.
+>>>>
+>>>>- Lifecycle methods
+>>>>  - JUnit 3: setUp()/tearDown() methods (no annotations).
+>>>>  - JUnit 5: @BeforeEach/@AfterEach and @BeforeAll/@AfterAll annotations.
+>>>>
+>>>>- Assertions and API
+>>>>  - JUnit 3: assertions are instance methods on TestCase (message first), e.g. assertEquals(msg, expected, actual).
+>>>>  - JUnit 5: static methods in org.junit.jupiter.api.Assertions (import statically). Message is usually last or provided as a Supplier:
+>>>>    - assertEquals(expected, actual, delta, () -> "msg")
+>>>>    - assertTrue(condition, () -> "msg")
+>>>>    - assertThrows(Exception.class, () -> {...})
+>>>>
+>>>>- Exception testing
+>>>>  - JUnit 3: try/catch + fail() to assert exceptions.
+>>>>  - JUnit 5: assertThrows provides concise exception assertions and returns the thrown exception for further checks.
+>>>>
+>>>>- Test discovery & execution
+>>>>  - JUnit 3: test runner depends on naming/extension; older tooling.
+>>>>  - JUnit 5: supports Jupiter engine, more flexible discovery (annotations), and better integration with modern build tools.
+>>>>
+>>>>- Parameterized tests & extensions
+>>>>  - JUnit 3: limited built-in support; needs external helpers.
+>>>>  - JUnit 5: rich @ParameterizedTest, @CsvSource, and an extension model (Extension API).
+>>>>
+>>>>- Static mocking / tooling
+>>>>  - Not a framework difference per se — mocking still uses external libs (Mockito, PowerMock). JUnit 5 works with modern mocking (Mockito-inline) and has better extension integration.
+>>>>
+>>>>- Messages & lazy evaluation
+>>>>  - JUnit 5 accepts message Suppliers (lambdas) to avoid building messages unless the assertion fails.
+>>>>
+>>>>- Backwards compatibility
+>>>>  - JUnit 5 is not a drop-in replacement; you need junit-jupiter dependencies and to run tests with the JUnit Platform (build tool plugin or IDE support).
+>>>>
+>>>>Practical migration notes
+>>>>- Move message argument from first to last when porting assertions.
+>>>>- Replace setUp/tearDown with @BeforeEach/@AfterEach.
+>>>>- Replace try/catch exception tests with assertThrows.
+>>>>- Stop extending TestCase and annotate methods with @Test.
+>>>>- Add junit-jupiter dependency and update build/test runner.
+>> **OBS!** There is no need to work with JUnit 3 , but the method use by JUnit 3 is a basic method that can be used to stup classes with is so important to develop block tests. I did it to learn how to develop stups on Java test env.
