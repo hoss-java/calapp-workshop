@@ -1,38 +1,170 @@
 package com.CalApp;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
-/**
- * Unit test for simple App.
- */
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
+
 public class CalAppTest 
-    extends TestCase
 {
     /**
-     * Create the test case
+     * @class RecordingPrintStream
+     * @brief Test-only PrintStream stub that records print/println calls.
      *
-     * @param testName name of the test case
+     * This stub collects printed lines into a list for assertions instead of writing to the console.
      */
-    public CalAppTest( String testName )
-    {
-        super( testName );
+    static class RecordingPrintStream extends PrintStream {
+        private final List<String> lines = new ArrayList<>();
+        private final StringBuilder partial = new StringBuilder();
+
+        /**
+         * Construct a RecordingPrintStream (no underlying output).
+         */
+        RecordingPrintStream() {
+            super(new OutputStream() { public void write(int b) { /* no-op */ } });
+        }
+
+        @Override
+        public void println(String x) {
+            // flush any partial before adding full line
+            if (partial.length() > 0) {
+                lines.add(partial.toString());
+                partial.setLength(0);
+            }
+            lines.add(x);
+        }
+
+        @Override
+        public void println() {
+            if (partial.length() > 0) {
+                lines.add(partial.toString());
+                partial.setLength(0);
+            } else {
+                lines.add("");
+            }
+        }
+
+        @Override
+        public void print(String s) {
+            // accumulate partial prints (e.g., prompts) and record as a line
+            partial.append(s);
+            // record prompt-like prints immediately
+            lines.add(partial.toString());
+            partial.setLength(0);
+        }
+
+        /**
+         * @brief Return all recorded lines.
+         * @return list of lines printed during the test
+         */
+        List<String> getLines() {
+            // if a partial remains, include it
+            if (partial.length() > 0) {
+                List<String> copy = new ArrayList<>(lines);
+                copy.add(partial.toString());
+                return copy;
+            }
+            return new ArrayList<>(lines);
+        }
     }
 
     /**
-     * @return the suite of tests being tested
+     * @brief Helper to create an InputStream from provided lines.
+     * @param lines each element becomes a line of input (newline appended)
+     * @return InputStream providing those lines to Scanner
      */
-    public static Test suite()
-    {
-        return new TestSuite( CalAppTest.class );
+    static InputStream linesToInputStream(String... lines) {
+        StringBuilder sb = new StringBuilder();
+        for (String l : lines) sb.append(l).append('\n');
+        return new ByteArrayInputStream(sb.toString().getBytes(StandardCharsets.UTF_8));
     }
 
     /**
-     * Rigourous Test :-)
+     * @brief Simulates an interactive session and verifies printed output.
+     *
+     * Simulated input:
+     * - "2 + 3 * 4"  -> expects "Result: 14.0"
+     * - "(2 + 3) * 4"-> expects "Result: 20.0"
+     * - "exit"       -> ends session
+     *
+     * This test injects a stub InputStream and RecordingPrintStream into the
+     * expressionCalculator overload and inspects the recorded output.
+     *
+     * @throws Exception on unexpected errors from the tested method
      */
-    public void testCalApp()
-    {
-        assertTrue( true );
+    @Test
+    void testExpressionCalculator_withStubs() throws Exception {
+        // Arrange
+        InputStream testIn = linesToInputStream("2 + 3 * 4", "(2 + 3) * 4", "exit");
+        RecordingPrintStream testOut = new RecordingPrintStream();
+
+        // Act
+        CalApp.expressionCalculator(testIn, testOut, new String[0]);
+
+        // Assert - check important prompts and results were printed
+        List<String> out = testOut.getLines();
+        assertTrue(out.stream().anyMatch(s -> s.contains("Welcome to the Interactive Expression Parser!")),
+                   () -> "Welcome message missing. Output:\n" + String.join("\n", out));
+        assertTrue(out.stream().anyMatch(s -> s.contains("Enter an expression to evaluate")),
+                   () -> "Prompt message missing. Output:\n" + String.join("\n", out));
+        assertTrue(out.stream().anyMatch(s -> s.contains("Result: 14.0")),
+                   () -> "Expected result 14.0 missing. Output:\n" + String.join("\n", out));
+        assertTrue(out.stream().anyMatch(s -> s.contains("Result: 20.0")),
+                   () -> "Expected result 20.0 missing. Output:\n" + String.join("\n", out));
+        assertTrue(out.stream().anyMatch(s -> s.contains("Thank you for using the parser. Goodbye!")),
+                   () -> "Goodbye message missing. Output:\n" + String.join("\n", out));
+    }
+
+
+    /**
+     * @brief Simulates an interactive session and verifies printed output.
+     *
+     * Simulated input:
+     * - "2 + 3 * 4"  -> expects "Result: 14.0"
+     * - "(2 + 3) * 4"-> expects "Result: 20.0"
+     * - "exit"       -> ends session
+     *
+     * The test temporarily replaces System.in and System.out, runs
+     * expressionCalculator, then restores the original streams.
+     *
+     * @throws Exception if the tested method throws an unexpected exception
+     */    
+    @Test
+    public void testExpressionCalculator() throws Exception {
+        String userInput = "2 + 3 * 4\n(2 + 3) * 4\nexit\n";
+        ByteArrayInputStream in = new ByteArrayInputStream(userInput.getBytes());
+        System.setIn(in);
+
+        // Capture System.out
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        PrintStream originalOut = System.out;
+        System.setOut(new PrintStream(outContent));
+
+        try {
+            // Run the CLI method under test
+            CalApp.expressionCalculator(System.in, System.out,new String[0]);
+
+            // Read captured output
+            String output = outContent.toString();
+
+            // Basic assertions: prompts and results present
+            assertTrue(output.contains("Welcome to the Interactive Expression Parser!"));
+            assertTrue(output.contains("Enter an expression to evaluate"));
+            assertTrue(output.contains(">")); // prompt
+            assertTrue(output.contains("Result: 14.0")); // 2 + 3 * 4 -> 14
+            assertTrue(output.contains("Result: 20.0")); // (2 + 3) * 4 -> 20
+            assertTrue(output.contains("Thank you for using the parser. Goodbye!"));
+        } finally {
+            // Restore original streams
+            System.setOut(originalOut);
+            System.setIn(System.in);
+        }
     }
 }

@@ -1,5 +1,9 @@
 package com.CalApp;
 
+import java.io.PrintStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+
 import java.util.Scanner;
 
 import com.CalApp.lib.ExpressionParser;
@@ -30,7 +34,7 @@ import com.CalApp.lib.ExpressionParser;
          * @param args Command-line arguments (ignored by this application).
          */
         public static void main(String[] args) {
-            expressionCalculator(args);
+            expressionCalculator(System.in, System.out,args);
         }
 
     /**
@@ -51,17 +55,17 @@ import com.CalApp.lib.ExpressionParser;
      *
      * @param args Command-line arguments (ignored).
      */
-    public static void expressionCalculator(String[] args) {
+    public static void expressionCalculator(InputStream in, PrintStream out, String[] args) {
         ExpressionParser myExpressionParser = new ExpressionParser();
-
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(in);
         String input;
 
-        System.out.println("Welcome to the Interactive Expression Parser!");
-        System.out.println("Enter an expression to evaluate or type 'exit' to quit:");
+        out.println("Welcome to the Interactive Expression Parser!");
+        out.println("Enter an expression to evaluate or type 'exit' to quit:");
 
         while (true) {
-            System.out.print("> ");
+            out.print("> ");
+            if (!scanner.hasNextLine()) break;
             input = scanner.nextLine();
 
             if (input.equalsIgnoreCase("exit")) {
@@ -70,13 +74,13 @@ import com.CalApp.lib.ExpressionParser;
 
             try {
                 double result = myExpressionParser.evaluate(input);
-                System.out.println("Result: " + result);
+                out.println("Result: " + result);
             } catch (Exception e) {
-                System.out.println("Error: " + e.getMessage());
+                out.println("Error: " + e.getMessage());
             }
         }
 
         scanner.close();
-        System.out.println("Thank you for using the parser. Goodbye!");
+        out.println("Thank you for using the parser. Goodbye!");
     }
 }
