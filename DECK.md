@@ -17,7 +17,7 @@ Abbreviations
 
 |#|Part|Details|Total Duration|Status|
 |:-|:-|:-|:-|:-|
-|1|[Develop](%base_url%/pm#Develop_timeplan)|2025-11-25 - |- hours|ONGOING|
+|1|[Develop](%base_url%/pm#Develop_timeplan)|2025-11-25 - 2025-12-02|- hours|DONE|
 |2|[Maintenance](%base_url%/pm#Maintenance_timeplan)|-|- hours|-|
 |:-|:-|:-|::||
 
