@@ -28,7 +28,7 @@ Abbreviations
 gantt
     section MD1
     SD1 - Plan how to work part1                :done,md1des1, 2025-11-26,1d
-    SD2 - Develop                :md1des2, after md1des1,2d
+    SD2 - Develop                :done,md1des2, after md1des1,2d
 
     section MD2
     SD1 - Document                :md2des1, 2025-11-29,1d
